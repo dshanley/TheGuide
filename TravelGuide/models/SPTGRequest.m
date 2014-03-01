@@ -60,7 +60,7 @@ NSString *const kWMBaseUrl =  @"http://en.wikivoyage.org/w/api.php";
 
 - (id)init {
     if (self = [super init]) {
-        self.parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"format":@"json", @"action":@"query", @"list":@"geosearch", @"gsradius":@"10000", @"gslimits":@"10"}];
+        self.parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"format":@"json", @"action":@"query", @"list":@"geosearch", @"gsradius":@"10000"}];
     }
     return self;
 }
