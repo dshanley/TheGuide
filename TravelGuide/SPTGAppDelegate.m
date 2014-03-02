@@ -42,7 +42,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [[manager HTTPRequestOperationWithRequest:[queryRequest request] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+//        NSLog(@"JSON: %@", responseObject);
         MWVCard *vcard = [[MWVCard alloc] initWithHTML:responseObject[@"parse"][@"text"][@"*"]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
