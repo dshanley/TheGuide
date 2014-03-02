@@ -36,8 +36,8 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [self showLoadingUi];
-    [self.articleController fetchArticleForCurrentLocation];
+//    [self showLoadingUi];
+//    [self.articleController fetchArticleForCurrentLocation];
 }
 
 - (void)didReceiveMemoryWarning

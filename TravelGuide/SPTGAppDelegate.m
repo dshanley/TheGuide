@@ -8,6 +8,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "SPTGAppDelegate.h"
 #import "SPTGRequest.h"
+#import "MWVCard.h"
 
 @implementation SPTGAppDelegate
 
@@ -36,16 +37,17 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // just for testing
-    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(45.5434085, -122.654422);
-    SPTGGeoRequest *geoRequest = [[SPTGGeoRequest alloc] init];
-    geoRequest.coordinates = coordinates;
+    SPTGQueryRequest *queryRequest = [[SPTGQueryRequest alloc] init];
+    queryRequest.pageId = @"31068";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager HTTPRequestOperationWithRequest:[geoRequest request] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[manager HTTPRequestOperationWithRequest:[queryRequest request] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
+        MWVCard *vcard = [[MWVCard alloc] initWithHTML:responseObject[@"parse"][@"text"][@"*"]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-    }];
+    }] start];
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
